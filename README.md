@@ -10,8 +10,10 @@ An accessible HTML quiz about accessibility.
 A `<button type="reset">` is used to allow the form to be reset both synchronously and&nbsp;asynchronously.
 
 ## ARIA
- - `aria-hidden="true"` is used to hide the question numbers
+ - `aria-hidden="true"` is used to prevent numeric question numbers like 5) from being read aloud
  - `aria-live="assertive"` is used to ensure whenever the scope component is updated the new score is read&nbsp;aloud
+
+ _Instead of reading numeric question numbers like "5)"" screen readers will ready visually hidden text like&nbsp;"Question 5 "._
 
 ## Progressive Enhancement
 This quiz is HTML&ndash;first meaning that all the questions are accessible even with JavaScript&nbsp;disabled.
