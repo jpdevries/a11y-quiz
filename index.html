@@ -211,7 +211,7 @@
         else if(bank[keyvalue[0]] == keyvalue[1]) score++;
       }
       if(checkAll >= 5) score++;
-      document.querySelector("form footer p").innerHTML = "You got " + score + " out of " + fieldsets.length + " correct. That is a " + ((score / fieldsets.length) * 100).toFixed(2) + '% score. Use the Reset button to <a href="javascript:document.querySelector(\'form\').reset()">play' + document.createTextNode('\u00A0') + 'again</a>.';
+      document.querySelector("form footer p").innerHTML = "You got " + score + " out of " + fieldsets.length + " correct. That is a " + ((score / fieldsets.length) * 100).toFixed(2) + '% score. Use the Reset button to <a href="javascript:document.querySelector(\'form\').reset()">play again</a>.';
       document.querySelector("button[type=reset]").focus();
     });
 
