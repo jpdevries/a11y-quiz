@@ -48,7 +48,7 @@
       <form action="#" method="post">
         <div>
           <fieldset class="active">
-            <legend><span aria-hidden="true">1) </span>Does accessibility rock?</legend>
+            <legend><span aria-hidden="true">1) </span>Does accessibility&nbsp;rock?</legend>
             <ol>
               <li><input disabled type="radio" name="does-a11y-rock" id="does-a11y-rock-no" value="no"><label for="does-a11y-rock-no">No</label></li>
               <li><input type="radio" name="does-a11y-rock" id="does-a11y-rock-yes" value="yes"><label for="does-a11y-rock-yes">Yes</label></li>
@@ -71,7 +71,7 @@
             </ol>
           </fieldset>
           <fieldset id="q4">
-            <legend><span aria-hidden="true">4) </span>Check all that are enhanced by an accessible design process:</legend>
+            <legend><span aria-hidden="true">4) </span>Check all that are enhanced by an accessible design&nbsp;process:</legend>
             <ol>
               <li><input type="checkbox" name="seo" id="seo" value="1"> <label for="seo">SEO</label></li>
               <li><input type="checkbox" name="performance" id="performance" value="1"> <label for="performance">Performance (Stability)</label></li>
@@ -81,7 +81,7 @@
             </ol>
           </fieldset>
           <fieldset id="q5">
-            <legend><span aria-hidden="true">5) </span>Which is the least semantic of the following HTML tags?</legend>
+            <legend><span aria-hidden="true">5) </span>Which is the least semantic of the following HTML&nbsp;tags?</legend>
             <ol>
               <li><input type="radio" name="least-semantic" id="least-semantic-h6" value="h6"><code aria-hidden>&lt;h6&gt;</code> <label for="least-semantic-h6" class="visually-hidden">Heading Level 6</label></li>
               <li><input type="radio" name="least-semantic" id="least-semantic-li" value="li"><code aria-hidden>&lt;li&gt;</code> <label for="least-semantic-li" class="visually-hidden">List Item</label></li>
@@ -107,7 +107,7 @@
             </ol>
           </fieldset>
           <fieldset id="q8">
-            <legend><span aria-hidden="true">8) </span>Is it possible to send form data to multiple syncronous endpoints without JavaScript?</legend>
+            <legend><span aria-hidden="true">8) </span>Is it possible to send form data to multiple syncronous endpoints without&nbsp;JavaScript?</legend>
             <ol>
               <li><input type="radio" name="sync-endpoints" id="sync-endpoints-huh" value="huh"> <label for="sync-endpoints-huh">Huh?</label></li>
               <li><input type="radio" name="sync-endpoints" id="sync-endpoints-yes" value="yes"> <label for="sync-endpoints-yes">Yes</label></li>
@@ -115,7 +115,7 @@
             </ol>
           </fieldset>
           <fieldset id="q9">
-            <legend><span aria-hidden="true">9) </span>Of the 1.1% of web users that aren't getting JavaScript enhancements what percentage of them have JavaScript disabled?</legend>
+            <legend><span aria-hidden="true">9) </span>Of the 1.1% of web users that aren't getting JavaScript enhancements what percentage of them have JavaScript&nbsp;disabled?</legend>
             <ol>
               <li><input type="radio" name="percent-nojs" id="percent-nojs-82" value="82"> <label for="percent-nojs-82">82%</label></li>
               <li><input type="radio" name="percent-nojs" id="percent-nojs-50" value="50"> <label for="percent-nojs-50">50%</label></li>
@@ -124,7 +124,7 @@
             </ol>
           </fieldset>
           <fieldset id="10">
-            <legend><span aria-hidden="true">10) </span>What should an accessibility&ndash;minded web architect aim to provide to users?</legend>
+            <legend><span aria-hidden="true">10) </span>What should an accessibility&ndash;minded web architect aim to provide to&nbsp;users?</legend>
             <ol>
               <li><input type="radio" name="a11y-minded-aim-to" id="a11y-minded-aim-to-equaility" value="equaility"> <label for="a11y-minded-aim-to-equaility">Equality</label></li>
               <li><input type="radio" name="a11y-minded-aim-to" id="a11y-minded-aim-to-justice" value="justice"> <label for="a11y-minded-aim-to-justice">Justice</label></li>
@@ -211,7 +211,7 @@
         else if(bank[keyvalue[0]] == keyvalue[1]) score++;
       }
       if(checkAll >= 5) score++;
-      document.querySelector("form footer p").innerHTML = "You got " + score + " out of " + fieldsets.length + " correct. That is a " + ((score / fieldsets.length) * 100).toFixed(2) + '% score. Use the Reset button to <a href="javascript:document.querySelector(\'form\').reset()">play again</a>.';
+      document.querySelector("form footer p").innerHTML = "You got " + score + " out of " + fieldsets.length + " correct. That is a " + ((score / fieldsets.length) * 100).toFixed(2) + '% score. Use the Reset button to <a href="javascript:document.querySelector(\'form\').reset()">play' + document.createTextNode('\u00A0') + 'again</a>.';
       document.querySelector("button[type=reset]").focus();
     });
 
