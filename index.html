@@ -195,7 +195,7 @@
           });
         }
         var score = calculateScore(userInput,bank);
-        document.querySelector("form footer p").innerHTML = scoreMessage(score,numQuestions);
+        document.querySelector("form footer p").innerHTML = scoreMessage(score,numQuestions,"javascript:document.querySelector(\'form\').reset()");
         document.querySelector("button[type=reset]").focus();
       });
 

@@ -25,12 +25,13 @@ function calculateScore(userInput,bank) {
     else if(bank[keyvalue[0]] == keyvalue[1]) score++;
   }
   if(checkAll >= 5) score++;
-  
+
   return score;
 }
 
-function scoreMessage(score,numQuestions) {
-  return ("You got " + score + " out of " + numQuestions + " correct. That is a " + Math.round((score / numQuestions) * 100) + '% score. <a href="/">Play again</a>.')
+function scoreMessage(score,numQuestions,playAgainLink) {
+  var playAgainLink = (playAgainLink === undefined) ? "/" : playAgainLink;
+  return ("You got " + score + " out of " + numQuestions + " correct. That is a " + Math.round((score / numQuestions) * 100) + '% score. <a href="' + playAgainLink + '">Play again</a>.')
 }
 
 module.exports = {
