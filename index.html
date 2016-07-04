@@ -45,10 +45,10 @@
   <body>
     <main>
       <h1>Accessibility Quiz</h1>
-      <form action="#" method="post">
+      <form action="/score" method="post"><!-- post the form data to /score, Node server.js will handle the syncronous form submission -->
         <div>
           <fieldset class="active">
-            <legend><span aria-hidden="true">1) </span><span class="visually-hidden">Question 1. </span>Does accessibility&nbsp;rock?</legend>
+            <legend><span aria-hidden="true">1) </span><span class="visually-hidden">Question 1 </span>Does accessibility&nbsp;rock?</legend>
             <ol>
               <li><input disabled type="radio" name="does-a11y-rock" id="does-a11y-rock-no" value="no"><label for="does-a11y-rock-no">No</label></li>
               <li><input type="radio" name="does-a11y-rock" id="does-a11y-rock-yes" value="yes"><label for="does-a11y-rock-yes">Yes</label></li>
@@ -131,6 +131,7 @@
             </ol>
           </fieldset>
         </div>
+        <input type="hidden" name="numquestions" value="10">
         <footer>
           <p aria-live="assertive"></p>
           <nav>
@@ -157,71 +158,55 @@
         document.write('<script src="https://code.jquery.com/jquery-1.12.2.min.js"><\/script>');
       }
     </script>
-
+    <!-- http://stuk.github.io/require1k/ - this lets us use require() in the browser -->
+    <script defer>R=function(e,n,v1){function t(e,o,u,a){if(e.g)return o(e.e,e);var c=e.g=e.l,f=new XMLHttpRequest;f.onload=function(i,l){function s(){l--||o(n,e)}200==f.status||e.t?(i=[],(e.t=e.t||f.response).replace(/(?:^|[^\w\$_.])require\s*\(\s*["']([^"']*)["']\s*\)/g,function(e,n){i.push(n)}),l=i.length,i.map(function(o){t(r(e.l,o),s,"."!=o[0]?c+"/../":n,o)}),s()):u?t(e.n=r(u+="../",a),o,u,a):(e.e=f,o(f,e))},e.t?f.onload():(f.open("GET",c,!0),f.send())}function r(e,n,t){if(e.e)throw e.e;return n?(f.href=e,i.href="."!=n[0]?"./node_modules/"+n:n,t=i.href+".js",f.href="",u[t]=u[t]||{l:t}):e.n?r(e.n):(e[c]||(e.f||a("(function(require,"+c+",module){"+e.t+"\n})//# sourceURL="+e.l))(function(n){return r(r(e.l,n))},e[c]={},e),e[c])}function o(e,n){t(e.call?{l:"",t:""+e,f:e}:r("",e),function(t,o){try{e=r(o)}catch(u){t=u}n&&n(t,e)})}var u={},a=eval,c="createElement",f=e[c]("base"),i=e[c]("a");return e.head.appendChild(f),c=e.querySelector("script[data-main]"),c&&o(c.dataset.main),c="exports",o}(document);</script>
     <script defer>
-    var bank = {
-      "does-a11y-rock":"yes",
-      "a11y-stand-for":"remind",
-      "should-all-access":"yes",
-      "least-semantic":"div",
-      "which-country":"india",
-      "is-enhanced":"yes",
-      "sync-endpoints":"yes",
-      "percent-nojs":"18",
-      "a11y-minded-aim-to":"justice",
-      //"seo":"1",
-      //"performance":"1",
-      //"optimization":"1",
-      //"usability":"1",
-      //"ux":"1"
-    },
-    form = document.querySelector("form"),
-    fieldsets = form.querySelectorAll("fieldset");
+    R(function(require, module, exports){ // load the same modules used in the syncronous node endpoint
+      var bank = require('./assets/js/plugins').bank,
+      calculateScore = require('./assets/js/plugins').calculateScore,
+      scoreMessage = require('./assets/js/plugins').scoreMessage;
 
-    form.addEventListener("submit",function(event){
-      event.preventDefault();
+      var form = document.querySelector("form"),
+      fieldsets = form.querySelectorAll("fieldset"),
+      numQuestions = fieldsets.length;
 
-      var a = form.querySelector("fieldset.active");
-      var ns = a.nextElementSibling || undefined;
-      if(ns) {
-        console.log(ns);
-        a.classList.remove("active");
-        ns.classList.add("active");
-        ns.querySelector("input").focus();
-        return;
-      }
+      form.addEventListener("submit",function(event){
+        event.preventDefault();
 
-      var userInput = [];
-      try { // try getting form data without jQuery
-        var formData = new FormData(event.target);
-        for(var keyvalue of formData.entries()) {
-           userInput.push(keyvalue);
+        var a = form.querySelector("fieldset.active");
+        var ns = a.nextElementSibling || undefined;
+        if(ns) {
+          console.log(ns);
+          a.classList.remove("active");
+          ns.classList.add("active");
+          ns.querySelector("input").focus();
+          return;
         }
-      } catch (e) { // use jQuery only if we need it
-        userInput = $(event.target).serializeArray().map(function(value,index){
-          return[value.name,value.value]
-        });
-      }
-      var score = 0;
-      var checkAll = 0;
-      for(var keyvalue of userInput) {
-        if((keyvalue[0] == "seo" || keyvalue[0] == "performance" || keyvalue[0] == "optimization" || keyvalue[0] == "usability" || keyvalue[0] == "ux") && keyvalue[1] == "1") {
-            checkAll++;
-        }
-        else if(bank[keyvalue[0]] == keyvalue[1]) score++;
-      }
-      if(checkAll >= 5) score++;
-      document.querySelector("form footer p").innerHTML = "You got " + score + " out of " + fieldsets.length + " correct. That is a " + ((score / fieldsets.length) * 100).toFixed(2) + '% score. Use the Reset button to <a href="javascript:document.querySelector(\'form\').reset()">play again</a>.';
-      document.querySelector("button[type=reset]").focus();
-    });
 
-    form.addEventListener("reset",function(event){
-      for(var i = 0; i < fieldsets.length; i++) {
-        (i) ? fieldsets[i].classList.remove("active") : fieldsets[i].classList.add("active");
-        document.querySelector("form footer p").innerHTML = "";
-        score = checkAll = 0;
-      }
-      document.getElementById("does-a11y-rock-yes").focus();
+        var userInput = [];
+        try { // try getting form data without jQuery
+          var formData = new FormData(event.target);
+          for(var keyvalue of formData.entries()) {
+             userInput.push(keyvalue);
+          }
+        } catch (e) { // use jQuery only if we need it
+          userInput = $(event.target).serializeArray().map(function(value,index){
+            return[value.name,value.value]
+          });
+        }
+        var score = calculateScore(userInput,bank);
+        document.querySelector("form footer p").innerHTML = scoreMessage(score,numQuestions);
+        document.querySelector("button[type=reset]").focus();
+      });
+
+      form.addEventListener("reset",function(event){
+        for(var i = 0; i < numQuestions; i++) {
+          (i) ? fieldsets[i].classList.remove("active") : fieldsets[i].classList.add("active");
+          document.querySelector("form footer p").innerHTML = "";
+          score = checkAll = 0;
+        }
+        document.getElementById("does-a11y-rock-yes").focus();
+      });
     });
     </script>
 
