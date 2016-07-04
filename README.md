@@ -5,7 +5,7 @@ An accessible HTML quiz about accessibility.
 [Take the quiz](https://jpdevries.github.io/a11y-quiz/).
 
 ## HTML Semantics
-`<main>`, `<form>`, `<fieldset>`, `<input>`, `<label>`, `<nav>`, and `<footer>` are all semantically used to construct the Accessibility Quiz document. Accessibly hidden text is used along with `aria-hidden` to read the full tag names of tags. For example "Heading Level 6" will be read aloud instead of&nbsp;`<h6>`.
+`<main>`, `<form>`, `<button>`, `<fieldset>`, `<legend>`, `<input>`, `<label>`, `<nav>`, and `<footer>` are all semantically used to construct the Accessibility Quiz document. Accessibly hidden text is used along with `aria-hidden` to read the full tag names of tags. For example "Heading Level 6" will be read aloud instead of&nbsp;`<h6>`.
 
 A `<button type="reset">` is used to allow the form to be reset both synchronously and&nbsp;asynchronously.
 
