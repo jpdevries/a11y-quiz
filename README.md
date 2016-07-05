@@ -35,6 +35,9 @@ JavaScript is used to progressively enhance the quiz by showing one question at 
 
 In an effort to be mindful of user bandwidth, jQuery is only loaded if native `new FormData().entries()` support detection&nbsp;fails.
 
+## CDN Fallback
+If jQuery is needed it will be loaded from `code.jquery.com`. If the CDN is unreachable an "h5bp style" fallback is used to load jQuery&nbsp;locally. This helps keeps the asynchronous experience accessible even if the CDN is blocked or&nbsp;down.
+
 ## Synchronous Endpoints
 A simple Node backend, `server.js`, is used to support plain HTML. The `<form action>` will post data to a `/score` endpoint. Users will be taken to a new page at `/score` and presented with their score along with a link to play&nbsp;again.
 
