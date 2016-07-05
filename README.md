@@ -19,6 +19,8 @@ You should be able to access the quiz at http://localhost:1185. To run the quiz 
 PORT=8080 node server.js #http://localhost:8080
 ```
 
+_You can also just open `index.html` in a browser or from your local server, you just won't get the `.no-js` support provided by the Node server synchronous&nbsp;endpoint._
+
 ## HTML Semantics
 `<main>`, `<form>`, `<button>`, `<fieldset>`, `<legend>`, `<input>`, `<label>`, `<nav>`, and `<footer>` are all semantically used to construct the Accessibility Quiz document. Accessibly hidden text is used along with `aria-hidden` to read the full tag names of tags. For example "Heading Level 6" will be read aloud instead of&nbsp;`<h6>`.
 
