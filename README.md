@@ -45,6 +45,13 @@ A simple Node backend, `server.js`, is used to support plain HTML. The `<form ac
 
 ![](http://j4p.us/030O1m080z3Y/Screen%20Shot%202016-07-05%20at%201.33.01%20AM.png)
 
+## DRY JavaScript
+JavaScript is kept DRY (Do not Repeat Yourself) by using the same modules on both the front end asyncronous experience as for the Node server syncronous&nbsp;endpoint. This means adding a new answer to the answer bank only requires a change in one&nbsp;place.
+
+## Adding Questions
+ - Add a `<fieldset>` to `index.html` and make sure to follow the same HTML structure and semantics as the others
+ - Add the answer to your question to `./assets/js/bank.js`
+
 ## ARIA
  - `aria-hidden="true"` is used to prevent numeric code representations of HTML tags like `<h6>` from being read aloud. Instead `.visually-hidden` text like "Heading Level 6" will be read&nbsp;aloud.
  - `aria-live="assertive"` is used to ensure whenever the scope component is updated the new score is read&nbsp;aloud
