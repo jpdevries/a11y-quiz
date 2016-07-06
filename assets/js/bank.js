@@ -8,6 +8,7 @@ module.exports = {
   "sync-endpoints":"yes",
   "percent-nojs":"18",
   "a11y-minded-aim-to":"justice",
+  "same-modules":"yes"
   //"seo":"1",
   //"performance":"1",
   //"optimization":"1",

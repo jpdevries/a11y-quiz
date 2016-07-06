@@ -62,3 +62,4 @@ function processAllFieldsOfTheForm(req, res) {
 
 server.listen(process.env.PORT || 1185);
 console.log("server listening on " + (process.env.PORT || 1185));
+console.log("Visit http://localhost:" + (process.env.PORT || 1185) + " in your browser");
